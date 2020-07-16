@@ -18,6 +18,7 @@ def home_page():
     #     active_board = session['board']
     new_board = boggle_game.make_board()
     session['board'] = new_board
+    session['words'] = []
     active_board = session['board']
     return render_template('board.html', board=active_board)
 
@@ -25,5 +26,15 @@ def home_page():
 @app.route('/<guess>')
 def check_guess_json(guess):
     result = boggle_game.check_valid_word(session['board'], guess)
-    data_dict = {"result": result, "word": guess}
+    if guess in session['words'] and result == "valid word!":
+        data_dict = {"result": "word already submitted", "word": guess}
+    elif guess not in session['words'] and result == "valid word!":
+        current_list = session['words']
+        current_list.append(guess)
+        session['words'] = current_list
+        data_dict = {"result": result, "word": guess} 
+    else:
+        data_dict = {"result": result, "word": guess}
+         
     return jsonify(data_dict)
+

@@ -2,6 +2,16 @@ class ActivateEvents {
     constructor() {
         this.activateSubmitBtn();
         this.score = 0;
+        this.startingTime = 20;
+        setInterval(() => {
+            this.startingTime -= 1;
+            $("#timer").text(this.startingTime)   
+        }, 1000);
+
+        setTimeout(() => {
+            $('.container').slideUp(300);
+            $('#score-title').text("FINAL SCORE: ");
+        }, 20000);
     }
 
     activateSubmitBtn() {

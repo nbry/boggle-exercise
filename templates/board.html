@@ -4,10 +4,11 @@
 
 {% block content %}
 <h1>Board</h1>
-<h3><span>Score: </span><span id="score">0</span></h3>
+<h3><span id="score-title">Score: </span><span id="score">0</span></h3>
 
 {% if board %}
 <section class="container">
+    <h3><span>Remaining Time: </span><span id="timer">20</span></h3>
     <div class="wrapper">
         {% for row in board %}
             {% for item in row %}
@@ -15,19 +16,14 @@
             {% endfor %}
         {% endfor %}
     </div>
+    <form class="guess-input" action="">
+        <label for="guess">Guess:</label>
+        <input id="guess" type="text" name="submitted-guess">
+        <button>Submit</button>
+    </form>
+
+    <section class="notification">
+    </section>
 </section>
-
-<form class="guess-input" action="">
-    <label for="guess">Guess:</label>
-    <input id="guess" type="text" name="submitted-guess">
-    <button>Submit</button>
-</form>
-
-<section class="notification">
-</section>
-
 {% endif %}
-
-
-
 {% endblock %}
