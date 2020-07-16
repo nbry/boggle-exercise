@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>Board</h1>
+<h3><span>Score: </span><span id="score">0</span></h3>
 
 {% if board %}
 <section class="container">
@@ -18,9 +19,12 @@
 
 <form class="guess-input" action="">
     <label for="guess">Guess:</label>
-    <input id="guess" type="text">
+    <input id="guess" type="text" name="submitted-guess">
     <button>Submit</button>
 </form>
+
+<section class="notification">
+</section>
 
 {% endif %}
 
