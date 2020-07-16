@@ -5,6 +5,7 @@
 {% block content %}
 <h1>Board</h1>
 
+{% if board %}
 <section class="container">
     <div class="wrapper">
         {% for row in board %}
@@ -14,5 +15,15 @@
         {% endfor %}
     </div>
 </section>
+
+<form class="guess-input" action="">
+    <label for="guess">Guess:</label>
+    <input id="guess" type="text">
+    <button>Submit</button>
+</form>
+
+{% endif %}
+
+
 
 {% endblock %}
