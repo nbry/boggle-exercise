@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}board{% endblock %}
+
+{% block content %}
+<h1>Board</h1>
+
+<section class="container">
+    <div class="wrapper">
+        {% for row in board %}
+            {% for item in row %}
+            <div class="piece">{{item}}</div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
