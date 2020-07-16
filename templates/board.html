@@ -1,29 +1,44 @@
 {% extends 'base.html' %}
 
-{% block title %}board{% endblock %}
+{% block title %}Boggle{% endblock %}
 
 {% block content %}
-<h1>Board</h1>
-<h3><span id="score-title">Score: </span><span id="score">0</span></h3>
+<h1>Boggle!</h1>
+<div class="stats">
+    <div>
+        <span>Top Score: </span> <span id="top-score">{{top_score}}</span>
+    </div>
+    <div>
+        <span>Number of Attempts: </span> <span id="attempts">{{attempts}}</span>
+    </div>
+</div>
+
+<button id="start-game">Start Game</button>
+
 
 {% if board %}
 <section class="container">
-    <h3><span>Remaining Time: </span><span id="timer">20</span></h3>
     <div class="wrapper">
         {% for row in board %}
-            {% for item in row %}
-            <div class="piece">{{item}}</div>
-            {% endfor %}
+        {% for item in row %}
+        <div class="piece">{{item}}</div>
+        {% endfor %}
         {% endfor %}
     </div>
-    <form class="guess-input" action="">
+    <h3><span class="game-stat">Remaining Time: </span><span id="timer">60</span>
+        <span class="game-stat" id="score-title">Score: </span><span id="score">0</span></h3>
+    <form class="guess-input">
         <label for="guess">Guess:</label>
         <input id="guess" type="text" name="submitted-guess">
-        <button>Submit</button>
+        <button id="submit-button">Submit</button>
     </form>
 
     <section class="notification">
     </section>
 </section>
+<form action="/" id="restart">
+    <button>New Game?</button>
+</form>
+
 {% endif %}
 {% endblock %}
