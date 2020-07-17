@@ -29,11 +29,11 @@ def home_page():
 @app.route('/<guess>')
 def check_guess_json(guess):
     result = boggle_game.check_valid_word(session['board'], guess.lower())
-    if guess in session['words'] and result == "valid word!":
+    if guess.lower() in session['words'] and result == "valid word!":
         data_dict = {"result": "word already submitted", "word": guess}
     elif guess not in session['words'] and result == "valid word!":
         current_list = session['words']
-        current_list.append(guess)
+        current_list.append(guess.lower())
         session['words'] = current_list
         data_dict = {"result": result, "word": guess} 
     else:
